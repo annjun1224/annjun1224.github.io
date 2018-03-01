@@ -277,11 +277,19 @@ classes that you can use:
     <script>
         $(document).ready(function(){
             $.awesome_toc({
+              autoDetectHeadings: true,
+              enableToTopButton: true,
+              title: "INDEX",
+              css: {
+                  fontSize: "14px",
+                  largeFontSize: "18px",
+                },
                 overlay: true,
                 contentId: "post-content",
             });
         });
     </script>
+
 
 
     
