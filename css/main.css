@@ -1040,7 +1040,7 @@ pre .javascript .function {
   }
 }
 .comments {
-  margin: 60px 20px 0;
+  margin: 0 auto;
 }
 .tag-cloud {
   text-align: center;
@@ -1651,6 +1651,16 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #f02b60;
+  border-bottom: none;
+  border-bottom: 1px solid #f02b60;
+}
 .sidebar {
   position: fixed;
   right: 0;
@@ -1819,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #33d02d;
+  background: #c3abfc;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1940,7 +1950,8 @@ pre .javascript .function {
 }
 .footer {
   font-size: 14px;
-  color: #999;
+/*color: $grey-dark;*/
+  color: #000;
 }
 .footer img {
   border: none;
@@ -2473,6 +2484,14 @@ body {
   -moz-box-shadow: 0 0 6px rgba(202,203,204,0.5);
 }
 .post {
+  background-color: rgba(255,255,255,0.7);
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 6px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 6px rgba(202,203,204,0.5);
+}
+.comments {
   background-color: rgba(255,255,255,0.7);
   margin-top: 60px;
   margin-bottom: 60px;
