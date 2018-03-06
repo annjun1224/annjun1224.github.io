@@ -107,23 +107,30 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="github," />
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ars Nova">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。">
+<meta name="keywords" content="github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github简单使用配置总结+SourceTree使用小结">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/Github简单使用配置总结+SourceTree使用小结/index.html">
 <meta property="og:site_name" content="Ars Nova">
+<meta property="og:description" content="记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/28525226/37034152-4522a7f8-2183-11e8-8ffc-a3f3cafffbcd.jpg">
+<meta property="og:updated_time" content="2018-03-06T14:35:40.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ars Nova">
+<meta name="twitter:title" content="Github简单使用配置总结+SourceTree使用小结">
+<meta name="twitter:description" content="记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/28525226/37034152-4522a7f8-2183-11e8-8ffc-a3f3cafffbcd.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/06/Github简单使用配置总结+SourceTree使用小结/"/>
 
 
 
@@ -132,7 +139,7 @@
     sidebar: "",
   };
 </script>
-  <title>Ars Nova</title>
+  <title>Github简单使用配置总结+SourceTree使用小结 | Ars Nova</title>
   
 
 
@@ -179,8 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/annjun1224"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
@@ -270,9 +276,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -304,9 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/" itemprop="url">Github简单使用配置总结+SourceTree使用小结</a></h1>
+          <h1 class="post-title" itemprop="name headline">Github简单使用配置总结+SourceTree使用小结</h1>
         
 
         <div class="post-meta">
@@ -381,6 +385,8 @@
           
 
           
+              <div class="post-description">记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。</div>
+          
 
         </div>
       </header>
@@ -411,16 +417,82 @@
       
 
       
-        
-          记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git下载地址</a></li>
+<li><a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">SourceTree下载地址</a>(可能需要翻墙。)</li>
+<li><p>注意：SourceTree在安装时需登录，跳过方法：</p>
+<ol>
+<li><p>安装完 SourceTree 以后先运行一次，弹出初始化登录页面后退出。</p>
+<p><img src="http://img.blog.csdn.net/20171220105709328" alt=""></p>
+</li>
+<li><p>进入文件夹：C:\Users\你的电脑名字\AppData\Local\Atlassian\SourceTree，在此找到或者新建一个文件全名为：accounts.json。注意：Windows系统文件后缀是默认隐藏的，需要先显示文件的后缀名。</p>
+</li>
+<li>打开文件，输入以下代码并保存。重启SourceTree即可。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">  [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"$id"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="string">"$type"</span>: <span class="string">"SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity"</span>,</span><br><span class="line">    <span class="string">"Authenticate"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"HostInstance"</span>: &#123;</span><br><span class="line">      <span class="string">"$id"</span>: <span class="string">"2"</span>,</span><br><span class="line">      <span class="string">"$type"</span>: <span class="string">"SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount"</span>,</span><br><span class="line">      <span class="string">"Host"</span>: &#123;</span><br><span class="line">        <span class="string">"$id"</span>: <span class="string">"3"</span>,</span><br><span class="line">        <span class="string">"$type"</span>: <span class="string">"SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount"</span>,</span><br><span class="line">        <span class="string">"Id"</span>: <span class="string">"atlassian account"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"BaseUrl"</span>: <span class="string">"https://id.atlassian.com/"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"Credentials"</span>: &#123;</span><br><span class="line">      <span class="string">"$id"</span>: <span class="string">"4"</span>,</span><br><span class="line">      <span class="string">"$type"</span>: <span class="string">"SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account"</span>,</span><br><span class="line">      <span class="string">"Username"</span>: <span class="string">""</span>,</span><br><span class="line">      <span class="string">"Email"</span>: <span class="literal">null</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"IsDefault"</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li>Git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。<br>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</li>
+<li>Git相关教程可以查看：<a href="http://www.runoob.com/git/git-tutorial.html" target="_blank" rel="noopener">Git教程</a></li>
+<li>Github：基于Git，能提供协作式代码版本控制服务。简介可查看：<a href="https://www.jianshu.com/p/b9077110e39c" target="_blank" rel="noopener">Github介绍</a></li>
+<li>SourceTree 是 Windows 和Mac OS X 下免费的 Git 和 Hg 客户端管理工具，同时也是Mercurial和Subversion版本控制系统工具。支持创建、克隆、提交、push、pull 和合并等操作。<br>SourceTree拥有一个精美简洁的界面，大大简化了开发者与代码库之间的Git操作方式，这对于那些不熟悉Git命令的开发者来说非常实用。</li>
+</ul>
+<h3 id="GitHub创建配置"><a href="#GitHub创建配置" class="headerlink" title="GitHub创建配置"></a>GitHub创建配置</h3><h4 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h4><ul>
+<li>首先创建github账号。</li>
+<li><p>进入首页，点击new repository：</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/37035130-7c088258-2186-11e8-9b70-6ef25109f18f.png" alt="image"></p>
+<p>或者点击右上角加号，创建新仓库。</p>
+</li>
+<li><p>输入仓库名字，选择公开，选择是否添加readme。gitignore可以之后添加，license可以先选择none，点击create。</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/37035246-e26c234c-2186-11e8-9ceb-09529846c7cd.png" alt="image"></p>
+<p>这就是用来存放项目代码的仓库。</p>
+<h4 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h4></li>
+<li><p>关于SSH：</p>
+<ul>
+<li>SSH全称(Secure SHell)是一种网络协议，顾名思义就是非常安全的shell，主要用于计算机间加密传输。</li>
+<li>当我们使用GitHub时，每次进行push操作都需要输入用户名和密码，会大大的降低效率，因此使用SSH key——可以帮我们记住用户名，还可对密码进行特殊保护。</li>
+<li>GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认推送人。</li>
+</ul>
+</li>
+<li><p>配置ssh key</p>
+<ol>
+<li>ssh在用户文件夹C:\Users\asus.ssh下的id_rsa.pub文件里，如已有则先删除该文件。</li>
+<li><p>生成ssh：在任意位置右键，Git Bash Here，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你注册的邮箱"</span></span><br></pre></td></tr></table></figure>
+<p>遇到提问用户名等直接回车，最后生成ssh。</p>
+</li>
+<li>绑定ssh key和github账户<br>回到你的Github首页，点击右上角头像-Settings-SSH and GPG keys，点击New SSH key新建一个新的key。<br>title：随意输入，key：打开c盘用户文件夹下.ssh文件里的id_rsa.pub文件，复制粘贴其中的内容。</li>
+<li><p>验证SSH key配置<br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>遇到continue输入yes，回车，在github的ssh设置页面刷新，如果对应钥匙变绿则成功配置。</p>
+</li>
+</ol>
+<h4 id="上传本地项目到gitHub"><a href="#上传本地项目到gitHub" class="headerlink" title="上传本地项目到gitHub"></a>上传本地项目到gitHub</h4><ul>
+<li><p>在需要上传github仓库的项目文件夹里，右键-git bash here。依次输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init  //将本地文件夹初始化为git项目</span><br><span class="line">git add . //将所有文件添加到git</span><br><span class="line">git commit -m <span class="string">"注释"</span> //提交git，此时本地项目已通过git</span><br><span class="line">git remote add origin git@git.oschina.net:annjun/weihua.git (github上的仓库地址，可变)</span><br><span class="line">git pull origin master  //拉取</span><br><span class="line">git push origin master  //推送</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其中，第三步add origin后面的仓库地址来源：点进刚刚建立的仓库，点击clone or download，点击右侧复制按钮。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="SourceTree简单使用方法。"><a href="#SourceTree简单使用方法。" class="headerlink" title="SourceTree简单使用方法。"></a>SourceTree简单使用方法。</h3><h4 id="SourceTree账户配置"><a href="#SourceTree账户配置" class="headerlink" title="SourceTree账户配置"></a>SourceTree账户配置</h4><ul>
+<li><p>添加github账户：点击remote-添加一个账户，选择github账户并输入用户名密码。</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/37036679-5722aba8-218b-11e8-8673-1b3e3ea2bb7f.png" alt="image"></p>
+</li>
+<li><p>关于local本地仓库和remote云端仓库：remote可以添加github和gitlab账户，而local可以添加的较多（这里local添加git/remote添加github）。</p>
+</li>
+<li>点击Add添加本地已关联github的仓库，选择工作路径可直接导入。</li>
+<li>点击Clone克隆Github仓库到计算机上，输入clone的仓库地址，和克隆在本机的路径。</li>
+<li>点击Create在电脑上创建新的空项目文件夹，并在账户上创建仓库进行关联。</li>
+</ul>
+<h4 id="提交项目的简单操作"><a href="#提交项目的简单操作" class="headerlink" title="提交项目的简单操作"></a>提交项目的简单操作</h4><ul>
+<li>更新完项目想提交云端时，在文件状态下的工作副本上右键，选择提交。并在下方输入提交注释，点击右下角提交完成提交。（git commit）</li>
+<li>此时如果云端仓库有更新，点击拉取合并代码。（git pull）</li>
+<li>如果云端无更新，直接点击推送。（git push）</li>
+</ul>
+
       
     </div>
 
@@ -433,203 +505,65 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Annjun 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/Github+hexo搭建个人blog过程小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Annjun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ars Nova">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/01/Github+hexo搭建个人blog过程小记/" itemprop="url">Github+hexo搭建个人blog过程小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T10:34:21+08:00">2018-03-01</time>
-            
-
-            
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/01/Github+hexo搭建个人blog过程小记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/Github+hexo搭建个人blog过程小记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/01/Github+hexo搭建个人blog过程小记/" class="leancloud_visitors" data-flag-title="Github+hexo搭建个人blog过程小记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+      
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/36975978-deac72a0-20b6-11e8-830b-ebd272ce4676.jpg" rel="gallery_cjefr61z800008ouq4u4giuxd"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://user-images.githubusercontent.com/28525226/36975978-deac72a0-20b6-11e8-830b-ebd272ce4676.jpg" itemprop="contentUrl"/>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/01/Github+hexo搭建个人blog过程小记/" rel="next" title="Github+hexo搭建个人blog过程小记">
+                <i class="fa fa-chevron-left"></i> Github+hexo搭建个人blog过程小记
               </a>
             
-          
+          </div>
 
-          
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
           </div>
         </div>
       
 
       
-        
-          最近自己用github+hexo完成了github博客的搭建，这里记录自己搭建的简单过程。包括一些必要软件的下载，hexo的配置和常用指令，以及遇到的一些问题等等。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/01/Github+hexo搭建个人blog过程小记/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -639,14 +573,49 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -667,8 +636,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -807,6 +785,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载"><span class="nav-number">1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub创建配置"><span class="nav-number">2.</span> <span class="nav-text">GitHub创建配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建远程仓库"><span class="nav-number">2.1.</span> <span class="nav-text">创建远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置SSH"><span class="nav-number">2.2.</span> <span class="nav-text">配置SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传本地项目到gitHub"><span class="nav-number">2.3.</span> <span class="nav-text">上传本地项目到gitHub</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SourceTree简单使用方法。"><span class="nav-number">3.</span> <span class="nav-text">SourceTree简单使用方法。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SourceTree账户配置"><span class="nav-number">3.1.</span> <span class="nav-text">SourceTree账户配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交项目的简单操作"><span class="nav-number">3.2.</span> <span class="nav-text">提交项目的简单操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -953,6 +947,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
 
   
 
