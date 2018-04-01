@@ -119,7 +119,7 @@
 <meta property="og:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg">
-<meta property="og:updated_time" content="2018-04-01T08:40:46.393Z">
+<meta property="og:updated_time" content="2018-04-01T08:53:49.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javaWeb开发环境:一些简单前期准备配置">
 <meta name="twitter:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
@@ -404,7 +404,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" rel="gallery_cjfgk5bah0000mkuqqbtn5f6t"
+                 href="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" rel="gallery_cjfgkk59y0007tkuqzbsyik3u"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" itemprop="contentUrl"/>
               </a>
@@ -420,16 +420,16 @@
         <h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
 <li><p>系统变量→新建 JAVA_HOME 变量。<br>变量值填写jdk的安装目录。<br>如本机：C:\Program Files\Java\jdk1.8.0_131</p>
 </li>
-<li><p>系统变量→Path 变量→编辑<br>在变量值最后输入  %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</p>
+<li><p>系统变量→Path 变量→编辑<br>在变量值最后输入  \%JAVA_HOME%\bin;\%JAVA_HOME\%\jre\bin;</p>
 </li>
-<li><p>系统变量→新建 CLASSPATH 变量<br>变量值填写   .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
+<li><p>系统变量→新建 CLASSPATH 变量<br>变量值填写   .;\%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
 </li>
 <li><p>检验是否配置成功 运行cmd 输入 java -version</p>
 </li>
 </ol>
 <h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><h4 id="环境变量配置-1"><a href="#环境变量配置-1" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
 <li>添加新的系统环境变量MAVEN_HOME，并设置其值为你安装的目录<br>   MAVEN_HOME= E:\tools\apache-maven-3.5.0</li>
-<li>更新系统PATH变量，添加;%MAVEN_HOME%\bin;到尾部</li>
+<li>更新系统PATH变量，添加;\%MAVEN_HOME\%\bin;到尾部</li>
 </ol>
 <h4 id="测试配置是否成功"><a href="#测试配置是否成功" class="headerlink" title="测试配置是否成功"></a>测试配置是否成功</h4><ul>
 <li>打开命令行窗口，输入mvn -v，如果有maven 版本信息输出则证明配置成功，否则请查看自己配置路径等是否正确。</li>
@@ -448,7 +448,7 @@
 </ul>
 <h4 id="修改端口号"><a href="#修改端口号" class="headerlink" title="修改端口号"></a>修改端口号</h4><ul>
 <li>tomcat的默认端口是8080，但该端口不是tomcat的唯一端口，可以通过修改tomat的配置文件进行修改。</li>
-<li><p>打开tomcat所在的conf文件夹的server.xml文件<br>找到<connector port="8080" ......="">等代码，将8080改为自己想改的端口：</connector></p>
+<li><p>打开tomcat所在的conf文件夹的server.xml文件<br>找到&#60;Connector port=”8080” ……/&#62;等代码，将8080改为自己想改的端口：</p>
 <p><img src="https://user-images.githubusercontent.com/28525226/38171146-e47bf542-35c5-11e8-8c18-783aea1e0a63.png" alt="d14aed89bb31c6d03b47b88300d5e85d"></p>
 </li>
 </ul>
