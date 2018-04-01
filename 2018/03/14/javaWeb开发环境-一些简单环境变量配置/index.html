@@ -119,7 +119,7 @@
 <meta property="og:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg">
-<meta property="og:updated_time" content="2018-04-01T08:53:49.424Z">
+<meta property="og:updated_time" content="2018-04-01T08:58:44.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javaWeb开发环境:一些简单前期准备配置">
 <meta name="twitter:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
@@ -404,7 +404,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" rel="gallery_cjfgkk59y0007tkuqzbsyik3u"
+                 href="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" rel="gallery_cjfgkqfz5000gswuqayro41pj"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg" itemprop="contentUrl"/>
               </a>
@@ -420,16 +420,16 @@
         <h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
 <li><p>系统变量→新建 JAVA_HOME 变量。<br>变量值填写jdk的安装目录。<br>如本机：C:\Program Files\Java\jdk1.8.0_131</p>
 </li>
-<li><p>系统变量→Path 变量→编辑<br>在变量值最后输入  \%JAVA_HOME%\bin;\%JAVA_HOME\%\jre\bin;</p>
+<li><p>系统变量→Path 变量→编辑<br>在变量值最后输入  &#37;JAVA_HOME%\bin;&#37;JAVA_HOME&#37;\jre\bin;</p>
 </li>
-<li><p>系统变量→新建 CLASSPATH 变量<br>变量值填写   .;\%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
+<li><p>系统变量→新建 CLASSPATH 变量<br>变量值填写   .;&#37;JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
 </li>
 <li><p>检验是否配置成功 运行cmd 输入 java -version</p>
 </li>
 </ol>
 <h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><h4 id="环境变量配置-1"><a href="#环境变量配置-1" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
 <li>添加新的系统环境变量MAVEN_HOME，并设置其值为你安装的目录<br>   MAVEN_HOME= E:\tools\apache-maven-3.5.0</li>
-<li>更新系统PATH变量，添加;\%MAVEN_HOME\%\bin;到尾部</li>
+<li>更新系统PATH变量，添加;&#37;MAVEN_HOME&#37;\bin;到尾部</li>
 </ol>
 <h4 id="测试配置是否成功"><a href="#测试配置是否成功" class="headerlink" title="测试配置是否成功"></a>测试配置是否成功</h4><ul>
 <li>打开命令行窗口，输入mvn -v，如果有maven 版本信息输出则证明配置成功，否则请查看自己配置路径等是否正确。</li>
@@ -472,7 +472,7 @@
 <ul>
 <li>添加jdk：    <ul>
 <li>-project defaults-project structure</li>
-<li>在SDKs中+，找到jdk目录，添加，应用。   </li>
+<li>在SDKs中&#43;，找到jdk目录，添加，应用。   </li>
 <li>在project中选择对应jdk。</li>
 </ul>
 </li>
@@ -497,7 +497,7 @@
 <ul>
 <li>添加tomcat<ul>
 <li>点击右上方菜单栏下箭头-edit-tomcat server-local-configuer，选择tomcat目录。</li>
-<li>重命名-选择deployment上面的+ 选择artifact-war。</li>
+<li>重命名-选择deployment上面的&#43; 选择artifact-war。</li>
 <li>点绿箭头可启动tomcat。</li>
 </ul>
 </li>
