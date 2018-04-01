@@ -107,23 +107,30 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,配置,环境变量," />
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ars Nova">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
+<meta name="keywords" content="java,配置,环境变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaWeb开发环境:一些简单前期准备配置">
+<meta property="og:url" content="http://yoursite.com/2018/03/14/javaWeb开发环境-一些简单环境变量配置/index.html">
 <meta property="og:site_name" content="Ars Nova">
+<meta property="og:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg">
+<meta property="og:updated_time" content="2018-04-01T08:40:46.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ars Nova">
+<meta name="twitter:title" content="javaWeb开发环境:一些简单前期准备配置">
+<meta name="twitter:description" content="主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/28525226/38171383-575cdf86-35cb-11e8-8339-f95a580fac90.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/14/javaWeb开发环境-一些简单环境变量配置/"/>
 
 
 
@@ -132,7 +139,7 @@
     sidebar: "",
   };
 </script>
-  <title>Ars Nova</title>
+  <title>javaWeb开发环境:一些简单前期准备配置 | Ars Nova</title>
   
 
 
@@ -179,8 +186,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/annjun1224"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
@@ -270,9 +276,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -304,9 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/14/javaWeb开发环境-一些简单环境变量配置/" itemprop="url">javaWeb开发环境:一些简单前期准备配置</a></h1>
+          <h1 class="post-title" itemprop="name headline">javaWeb开发环境:一些简单前期准备配置</h1>
         
 
         <div class="post-meta">
@@ -381,6 +385,8 @@
           
 
           
+              <div class="post-description">主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。</div>
+          
 
         </div>
       </header>
@@ -411,16 +417,100 @@
       
 
       
-        
-          主要记录了javaWeb开发环境下一些必备工具的简单配置，包括jdk、maven、tomcat、mysql和idea的设置，算是基础的开发准备。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/14/javaWeb开发环境-一些简单环境变量配置/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
+<li><p>系统变量→新建 JAVA_HOME 变量。<br>变量值填写jdk的安装目录。<br>如本机：C:\Program Files\Java\jdk1.8.0_131</p>
+</li>
+<li><p>系统变量→Path 变量→编辑<br>在变量值最后输入  %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</p>
+</li>
+<li><p>系统变量→新建 CLASSPATH 变量<br>变量值填写   .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
+</li>
+<li><p>检验是否配置成功 运行cmd 输入 java -version</p>
+</li>
+</ol>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><h4 id="环境变量配置-1"><a href="#环境变量配置-1" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
+<li>添加新的系统环境变量MAVEN_HOME，并设置其值为你安装的目录<br>   MAVEN_HOME= E:\tools\apache-maven-3.5.0</li>
+<li>更新系统PATH变量，添加;%MAVEN_HOME%\bin;到尾部</li>
+</ol>
+<h4 id="测试配置是否成功"><a href="#测试配置是否成功" class="headerlink" title="测试配置是否成功"></a>测试配置是否成功</h4><ul>
+<li>打开命令行窗口，输入mvn -v，如果有maven 版本信息输出则证明配置成功，否则请查看自己配置路径等是否正确。</li>
+<li>注意：安装maven前请确保已安装JDK并成功配置其环境变量。</li>
+</ul>
+<h4 id="阿里云镜像配置"><a href="#阿里云镜像配置" class="headerlink" title="阿里云镜像配置"></a>阿里云镜像配置</h4><ul>
+<li>修改conf下settings.xml文件为<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h4 id="环境变量配置-2"><a href="#环境变量配置-2" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><ol>
+<li>变量名：CATALINA_HOME</li>
+<li>变量值：tomcat安装路径，如：E:\tools\apache-tomcat-7.0.82</li>
+</ol>
+<h4 id="测试配置是否成功-1"><a href="#测试配置是否成功-1" class="headerlink" title="测试配置是否成功"></a>测试配置是否成功</h4><ul>
+<li>找到bin目录下执行文件，执行后访问localhost:8080，如果跳出tomcat主界面则成功</li>
+</ul>
+<h4 id="修改端口号"><a href="#修改端口号" class="headerlink" title="修改端口号"></a>修改端口号</h4><ul>
+<li>tomcat的默认端口是8080，但该端口不是tomcat的唯一端口，可以通过修改tomat的配置文件进行修改。</li>
+<li><p>打开tomcat所在的conf文件夹的server.xml文件<br>找到<connector port="8080" ......="">等代码，将8080改为自己想改的端口：</connector></p>
+<p><img src="https://user-images.githubusercontent.com/28525226/38171146-e47bf542-35c5-11e8-8c18-783aea1e0a63.png" alt="d14aed89bb31c6d03b47b88300d5e85d"></p>
+</li>
+</ul>
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><h4 id="安装相关"><a href="#安装相关" class="headerlink" title="安装相关"></a>安装相关</h4><ul>
+<li>去官网下载社区免费版本musql。下载mysql-installer-web-community-5.7.20.0.msi。双击直接安装。</li>
+</ul>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><ul>
+<li><p>安装完后，以【管理员身份】运行cmd，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//进入mysql server安装目录的bin下</span><br><span class="line">cd C:\Program Files\MySQL\MySQL Server 5.7\bin</span><br><span class="line">mysqld.exe --install</span><br><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果net start无法启动，则输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize-insecure --user=mysql</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行完上面命令后，MySQL会自建一个data文件夹，并且建好默认数据库，登录的用户名为root，密码为空，之后就可以通过命令net start mysql启动mysql服务了。</p>
+<ul>
+<li>同时将C:\Program Files\MySQL\MySQL Server 5.7\bin配置到系统path变量下。</li>
+<li>再次打开cmd输入mysql -uroot -p即可访问数据库。</li>
+</ul>
+<h3 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h3><h4 id="前期简单配置"><a href="#前期简单配置" class="headerlink" title="前期简单配置"></a>前期简单配置</h4><p>进入画面之前-右下角configure</p>
+<ul>
+<li>添加jdk：    <ul>
+<li>-project defaults-project structure</li>
+<li>在SDKs中+，找到jdk目录，添加，应用。   </li>
+<li>在project中选择对应jdk。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>添加maven<br>-settings-搜索maven，添加maven解压目录。</p>
+</li>
+<li><p>快捷键设置<br>-settings-keymap，可以选择eclipse。</p>
+</li>
+<li><p>字体大小</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/38171273-f4c8ee16-35c8-11e8-8976-c7848ed09c37.png" alt="image 2"></p>
+</li>
+</ul>
+<ul>
+<li>创建<ul>
+<li>create-maven-勾选create from archetype。   </li>
+<li>选择maven-archetype-webapp。   </li>
+<li>下载好后，main下创建java文件夹，右键-mark directory as-sources root。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>添加tomcat<ul>
+<li>点击右上方菜单栏下箭头-edit-tomcat server-local-configuer，选择tomcat目录。</li>
+<li>重命名-选择deployment上面的+ 选择artifact-war。</li>
+<li>点绿箭头可启动tomcat。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>配置mybatis插件mybatis-plugin<ul>
+<li>file-settings-plugin-browse repositories。</li>
+<li>查找mybatis plugin install。</li>
+<li>其他插件也可如此配置，如lombok插件。</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -433,203 +523,69 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Annjun 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/Hexo主题美化小结（基于Next主题）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Annjun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ars Nova">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/07/Hexo主题美化小结（基于Next主题）/" itemprop="url">Hexo主题美化小结（基于Next主题）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T13:50:03+08:00">2018-03-07</time>
-            
-
-            
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
           
-
+            <a href="/tags/配置/" rel="tag"><i class="fa fa-tag"></i> 配置</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/07/Hexo主题美化小结（基于Next主题）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/07/Hexo主题美化小结（基于Next主题）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/环境变量/" rel="tag"><i class="fa fa-tag"></i> 环境变量</a>
           
-
-          
-          
-             <span id="/2018/03/07/Hexo主题美化小结（基于Next主题）/" class="leancloud_visitors" data-flag-title="Hexo主题美化小结（基于Next主题）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+      
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/37385509-161b11e0-278f-11e8-925a-8d1af2314438.jpg" rel="gallery_cjfgk5bhv0008mkuqex84165r"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://user-images.githubusercontent.com/28525226/37385509-161b11e0-278f-11e8-925a-8d1af2314438.jpg" itemprop="contentUrl"/>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/07/Hexo主题美化小结（基于Next主题）/" rel="next" title="Hexo主题美化小结（基于Next主题）">
+                <i class="fa fa-chevron-left"></i> Hexo主题美化小结（基于Next主题）
               </a>
             
-          
+          </div>
 
-          
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
           </div>
         </div>
       
 
       
-        
-          在搭建hexo博客后，我使用了next主题，并且做了一些自定义美化，这里记录一下。同时介绍一下hexo的大体架构理解。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/07/Hexo主题美化小结（基于Next主题）/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -639,382 +595,49 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/Github简单使用配置总结+SourceTree使用小结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Annjun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ars Nova">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/" itemprop="url">Github简单使用配置总结+SourceTree使用小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T21:01:24+08:00">2018-03-06</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/" class="leancloud_visitors" data-flag-title="Github简单使用配置总结+SourceTree使用小结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/37034152-4522a7f8-2183-11e8-8ffc-a3f3cafffbcd.jpg" rel="gallery_cjfgk5bh00006mkuq71lm8b53"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://user-images.githubusercontent.com/28525226/37034152-4522a7f8-2183-11e8-8ffc-a3f3cafffbcd.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
-
+    <div class="post-spread">
       
         
-          记录一下github的简单配置部署，同时介绍一下git相关工具SourceTree简单使用方法。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/06/Github简单使用配置总结+SourceTree使用小结/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/01/Github+hexo搭建个人blog过程小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Annjun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar2.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ars Nova">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/01/Github+hexo搭建个人blog过程小记/" itemprop="url">Github+hexo搭建个人blog过程小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T10:34:21+08:00">2018-03-01</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/01/Github+hexo搭建个人blog过程小记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/Github+hexo搭建个人blog过程小记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/01/Github+hexo搭建个人blog过程小记/" class="leancloud_visitors" data-flag-title="Github+hexo搭建个人blog过程小记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="https://user-images.githubusercontent.com/28525226/36975978-deac72a0-20b6-11e8-830b-ebd272ce4676.jpg" rel="gallery_cjfgk5bdv0002mkuq5nb293a0"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://user-images.githubusercontent.com/28525226/36975978-deac72a0-20b6-11e8-830b-ebd272ce4676.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
           </div>
-        </div>
-      
+          
 
-      
-        
-          最近自己用github+hexo完成了github博客的搭建，这里记录自己搭建的简单过程。包括一些必要软件的下载，hexo的配置和常用指令，以及遇到的一些问题等等。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/01/Github+hexo搭建个人blog过程小记/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
+  
+    <div class="comments" id="comments">
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
   
 
 
-          </div>
-          
 
         </div>
         
@@ -1035,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1184,6 +816,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK"><span class="nav-number">1.</span> <span class="nav-text">JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量配置"><span class="nav-number">1.1.</span> <span class="nav-text">环境变量配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven"><span class="nav-number">2.</span> <span class="nav-text">Maven</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量配置-1"><span class="nav-number">2.1.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试配置是否成功"><span class="nav-number">2.2.</span> <span class="nav-text">测试配置是否成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阿里云镜像配置"><span class="nav-number">2.3.</span> <span class="nav-text">阿里云镜像配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat"><span class="nav-number">3.</span> <span class="nav-text">Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量配置-2"><span class="nav-number">3.1.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试配置是否成功-1"><span class="nav-number">3.2.</span> <span class="nav-text">测试配置是否成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改端口号"><span class="nav-number">3.3.</span> <span class="nav-text">修改端口号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL"><span class="nav-number">4.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装相关"><span class="nav-number">4.1.</span> <span class="nav-text">安装相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">4.2.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IntelliJ-IDEA"><span class="nav-number">5.</span> <span class="nav-text">IntelliJ IDEA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前期简单配置"><span class="nav-number">5.1.</span> <span class="nav-text">前期简单配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -1330,6 +978,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
 
   
 
