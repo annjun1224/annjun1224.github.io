@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="单元测试,Mockito,Junit," />
+
+
+<meta name="description" content="最近换了工作，新公司要求在写后台类的同时要写单元测试，之前没怎么接触过，所以学习了一下。这篇主要记录学习的一些主要内容。包括单元测试的介绍和常用的单元测试框架Mockito等等。">
+<meta name="keywords" content="单元测试,Mockito,Junit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单元测试学习笔记(一) 关于单元测试和Mockito">
+<meta property="og:url" content="http://yoursite.com/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/index.html">
+<meta property="og:site_name" content="Ars Nova">
+<meta property="og:description" content="最近换了工作，新公司要求在写后台类的同时要写单元测试，之前没怎么接触过，所以学习了一下。这篇主要记录学习的一些主要内容。包括单元测试的介绍和常用的单元测试框架Mockito等等。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/04/04/单元测试学习笔记(一)%20关于单元测试和Mockito/index.html">
+<meta property="og:updated_time" content="2018-05-09T06:00:36.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单元测试学习笔记(一) 关于单元测试和Mockito">
+<meta name="twitter:description" content="最近换了工作，新公司要求在写后台类的同时要写单元测试，之前没怎么接触过，所以学习了一下。这篇主要记录学习的一些主要内容。包括单元测试的介绍和常用的单元测试框架Mockito等等。">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/04/单元测试学习笔记(一)%20关于单元测试和Mockito/index.html">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>单元测试学习笔记(一) 关于单元测试和Mockito | Ars Nova</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <!--  -->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/annjun1224"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ars Nova</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">「等待，并心怀希望吧。」</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Annjun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ars Nova">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">单元测试学习笔记(一) 关于单元测试和Mockito</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T10:08:00+08:00">2018-04-04</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/04/单元测试学习笔记(一) 关于单元测试和Mockito/" class="leancloud_visitors" data-flag-title="单元测试学习笔记(一) 关于单元测试和Mockito">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">最近换了工作，新公司要求在写后台类的同时要写单元测试，之前没怎么接触过，所以学习了一下。这篇主要记录学习的一些主要内容。包括单元测试的介绍和常用的单元测试框架Mockito等等。</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/" rel="gallery_cjgyp4bk10002awuq57cxiqq3"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h3 id="关于单元测试"><a href="#关于单元测试" class="headerlink" title="关于单元测试"></a>关于单元测试</h3><h4 id="单元测试的优点"><a href="#单元测试的优点" class="headerlink" title="单元测试的优点"></a>单元测试的优点</h4><ul>
+<li>单元测试是指对软件中的最小可测试单元进行检查和验证。</li>
+<li>在Java中的单元测试，一般是对一个类的测试。能让coder极为迅速并且准确的定位错误的来源。因此，极大的减少了我们调试的时间。</li>
+</ul>
+<h4 id="关于隔离测试（Mock）和Mock对象"><a href="#关于隔离测试（Mock）和Mock对象" class="headerlink" title="关于隔离测试（Mock）和Mock对象"></a>关于隔离测试（Mock）和Mock对象</h4><ul>
+<li>在一个大项目或者关系比较紧密的项目中，很有可能出现两个子系统之间的接口依赖，因此极可能会造成前期开发中基础系统一直在开发接口，而自己的功能只能放后。</li>
+<li>隔离测试它使得我们可以测试还未写完的代码（只要你有接口可使用），另外，隔离测试能帮助团队单元测试代码的一部分，而无需等待全部代码的完成。</li>
+<li><p>如图：    </p>
+<p><img src="https://user-images.githubusercontent.com/28525226/39754536-1d38de12-52f5-11e8-8ac7-cb7a4b1b314e.png" alt="image">    </p>
+<p>从上图可以看出，如果我们要对A进行测试，那么就要先把整个依赖树构建出来，也就是BCDE的实例。   </p>
+<p>而一种替代方案就是使用Mock：</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/39754762-de9d6a1e-52f5-11e8-9614-ca133d2e895d.png" alt="image">   </p>
+<ul>
+<li>mock对象就是在调试期间用来作为真实对象的替代品。</li>
+<li>mock测试就是在测试过程中，对那些不容易构建的对象用一个虚拟对象来代替测试的方法就叫mock测试。</li>
+<li>Mockito就是一种mock框架。</li>
+</ul>
+</li>
+</ul>
+<h4 id="关于测试替身"><a href="#关于测试替身" class="headerlink" title="关于测试替身"></a>关于测试替身</h4><ul>
+<li>Stub(桩)-用简单可能的实现来代替真实的实现。</li>
+<li>Fake(伪造对象)-优化的伪造真实事物的行为。</li>
+<li>SPY(测试间谍)-用于记录发生的情况, 用于事后验证。</li>
+<li><p>Mock(模拟对象)-特定情景下可配置行为的对象。</p>
+</li>
+<li><p>Mock和Stub的异同：</p>
+<ul>
+<li>相同点：Stub和Mock对象都是用来模拟外部依赖，使我们能控制。</li>
+<li>不同点：而stub完全是模拟一个外部依赖，用来提供测试时所需要的测试数据。而mock对象用来判断测试是否能通过，也就是用来验证测试中依赖对象间的交互能否达到预期。</li>
+<li>在mocking框架中mock对象可以同时作为stub和mock对象使用，两者并没有严格区别。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Mockito"><a href="#Mockito" class="headerlink" title="Mockito"></a>Mockito</h3><h4 id="什么是Mockito"><a href="#什么是Mockito" class="headerlink" title="什么是Mockito"></a>什么是Mockito</h4><ul>
+<li>Mockito是mocking框架，是Google Code上的一个开源项目，Api相对于EasyMock更好友好。Mockito简单易学，它可读性强和验证语法简洁。</li>
+<li>用Mockito完成单元测试的过程大致可以划分为以下几个步骤：<ol>
+<li>生成 Mock 对象。</li>
+<li>设定 Mock 对象的预期行为和输出。</li>
+<li>调用 Mock 对象方法进行单元测试。</li>
+<li>对 Mock 对象的行为进行验证。</li>
+</ol>
+</li>
+</ul>
+<h4 id="IDEA里新建某个类的测试类的方法"><a href="#IDEA里新建某个类的测试类的方法" class="headerlink" title="IDEA里新建某个类的测试类的方法"></a>IDEA里新建某个类的测试类的方法</h4><ul>
+<li>需要下载Junit插件。</li>
+<li>maven导入相关junit和mockito依赖包。</li>
+<li>建立或跳转到当前类的测试类：Ctrl&#43;Shift&#43;T。</li>
+<li>编辑测试和设置运行：<ul>
+<li>run-edit configuration 可以设置运行的测试类。</li>
+<li>下载junit插件后，类前有运行箭头，可选择run/debug/with coverage，最后一个是显示测试覆盖率。会在跑完后在被测试的类前显示颜色以标识覆盖情况（覆盖到的绿色，没覆盖到红色）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Mocktio实例"><a href="#Mocktio实例" class="headerlink" title="Mocktio实例"></a>Mocktio实例</h4><p>  以某段测试类代码为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用built-in runner：MockitoJUnitRunner初始化mock的代码</span></span><br><span class="line"><span class="meta">@RunWith</span>(MockitoJUnitRunner.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccNbrPrefixFormatTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建Mock对象模拟AccNbrService类</span></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    AccNbrService accNbrService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自动注入Mock类（AccNbrService）到被测试类（AccNbrPrefixFormat），作为一个属性</span></span><br><span class="line">    <span class="meta">@InjectMocks</span></span><br><span class="line">    AccNbrPrefixFormat accNbrPrefixFormat = <span class="keyword">new</span> AccNbrPrefixFormat();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> BaseAppException </span>&#123;</span><br><span class="line">        <span class="comment">//实例化一个AccNbrPrefix类并赋值</span></span><br><span class="line">        AccNbrPrefix accNbrPrefix = <span class="keyword">new</span> AccNbrPrefix();</span><br><span class="line">        accNbrPrefix.setAccNbr(<span class="string">"190001"</span>);</span><br><span class="line">        accNbrPrefix.setPrefix(<span class="string">"86"</span>);</span><br><span class="line"></span><br><span class="line">        String msisdnMock = <span class="string">"190001"</span>;</span><br><span class="line">        <span class="comment">//通过 when(mock.someMethod()).thenReturn(value) 来设定 Mock 对象某个方法调用时的返回值。</span></span><br><span class="line">        <span class="comment">//这里当调用模拟类的方法时，返回该实体类。</span></span><br><span class="line">        Mockito.when(accNbrService.formatPrefixAccNbr(msisdnMock)).thenReturn(accNbrPrefix);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> BaseAppException </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        params.put(<span class="string">"MSISDN"</span>, <span class="string">"190001"</span>);</span><br><span class="line"></span><br><span class="line">        accNbrPrefixFormat.execute(params);</span><br><span class="line">        <span class="comment">//断言：期望值与实际值对比</span></span><br><span class="line">        Assert.assertEquals(<span class="string">"190001"</span>, params.get(<span class="string">"ACC_NBR"</span>));</span><br><span class="line">        Assert.assertEquals(<span class="string">"86"</span>, params.get(<span class="string">"PREFIX"</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="几个常用注解"><a href="#几个常用注解" class="headerlink" title="几个常用注解"></a>几个常用注解</h5><ul>
+<li><strong>@RunWith(MockitoJUnitRunner.class)</strong>：使用Mockito一般需要在类前加上这个注解。</li>
+<li><strong>@Mock</strong>：创建模拟的对象。<ul>
+<li><strong>注：不能mock静态、final、私有方法等。</strong></li>
+</ul>
+</li>
+<li><strong>@InjectMocks</strong>：被注入mock对象的被测试类。</li>
+<li><p><strong>@Test</strong>：把一个方法标记为测试方法。Test的属性有：</p>
+<ul>
+<li><p>except：用来测试异常，如图，如果这个测试方法抛出了异常则通过，如果没抛出异常 则测试不通过执行fail(“factorial参数为负数没有抛出异常”)。</p>
+<p><img src="https://user-images.githubusercontent.com/28525226/39793341-ae84a6f8-5377-11e8-84a1-42f0207fa3b4.png" alt="image"></p>
+</li>
+<li><p>timeout：测试一个方法能否在规定时间完成：<br>如@Test(timeout=2000)：测试该测试方法是否在2000毫秒内完成。</p>
+</li>
+</ul>
+</li>
+<li><strong>@Before</strong>：每一个测试方法执行前自动调用一次。</li>
+<li><p><strong>@After</strong>：每一个测试方法执行完自动调用一次。</p>
+</li>
+<li><p><strong>@BeforeClass</strong>：所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，所以用static修饰。</p>
+</li>
+<li><strong>@AfterClass</strong>：所有测试方法执行完执行一次，在测试类还没有实例化就已经被加载，所以用static修饰。</li>
+<li><p><strong>@Ignore</strong>：暂不执行该测试方法。</p>
+</li>
+<li><p>执行顺序：BeforeClass→(构造方法)→Before→Test1→After→(构造方法)→Before→Test2→After→AfterClas。</p>
+<ul>
+<li>@BeforeClass和@AfterClass在类被实例化前（构造方法执行前）就被调用了，而且只执行一次，通常用来初始化和关闭资源。</li>
+<li>@Before和@After和在每个@Test执行前后都会被执行一次。</li>
+<li>@Test标记一个方法为测试方法，被@Ignore标记的测试方法不会被执行，例如这个模块还没完成或者现在想测试别的不想测试这一块。</li>
+<li>JUnit4为了保证每个测试方法都是单元测试，是独立的互不影响。所以每个测试方法执行前都会重新实例化测试类（构造方法多次调用）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h4><h5 id="设定-Mock-对象某个方法调用时的返回值"><a href="#设定-Mock-对象某个方法调用时的返回值" class="headerlink" title="设定 Mock 对象某个方法调用时的返回值"></a>设定 Mock 对象某个方法调用时的返回值</h5><p>  @Mock设置生成了mock对象，那么这是用Mockito完成单元测试的第二步：设定Mock对象的预期行为和输出。<br>  有两种书写方式：</p>
+<blockquote>
+<p>when(mock.someMethod()).thenReturn(value)   </p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>doReturn(value).when(mock).someMethod()</p>
+</blockquote>
+<h5 id="验证被测试方法"><a href="#验证被测试方法" class="headerlink" title="验证被测试方法"></a>验证被测试方法</h5><p>  即用Mockito完成单元测试的第四步：对Mock对象的行为进行验证。<br>  Mock 对象一旦建立便会自动记录自己的交互行为，所以我们可以有选择的对它的 交互行为进行验证在 Mockito中验证 Mock 对象交互行为的方法是：</p>
+<blockquote>
+<p>verify(mock).someMethod(…)。</p>
+</blockquote>
+<p>  可以验证调用次数，如：</p>
+<blockquote>
+<p>verify(mock, times(num)).someMethod(…)。</p>
+</blockquote>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customCheckAndFillUpWholesaleInstEx</span><span class="params">()</span> <span class="keyword">throws</span> BaseAppException </span>&#123;</span><br><span class="line">    WholesaleInstExDto wholesaleInstExDto = <span class="keyword">new</span> WholesaleInstExDto();</span><br><span class="line">    transferAcctImportComp.customCheckAndFillUpWholesaleInstEx(wholesaleInstExDto);</span><br><span class="line">    <span class="comment">// 是否校验非 bundle和VPN订户</span></span><br><span class="line">    Mockito.verify(wholesaleManager).checkSubsRela4WholesaleInst(wholesaleInstExDto);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="对方法设定返回异常"><a href="#对方法设定返回异常" class="headerlink" title="对方法设定返回异常"></a>对方法设定返回异常</h5><blockquote>
+<p>when(list.get(1)).thenThrow(new RuntimeException(“test excpetion”));    </p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>doThrow(new RuntimeException(“test excpetion”)).when(list).get(1);</p>
+</blockquote>
+<p>  doThrow在运行测试方法时如果报错会抛出相应异常，从而覆盖被测试方法中的catch部分。如：<br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@InjectMocks</span></span><br><span class="line">  <span class="keyword">private</span> BatchTransferAcctImportComp transferAcctImportComp;</span><br><span class="line">  <span class="meta">@Mock</span></span><br><span class="line">  ExceptionChecker exceptionChecker;</span><br><span class="line">  <span class="meta">@Mock</span></span><br><span class="line">  <span class="keyword">private</span> AcctService acctService;</span><br><span class="line">  <span class="meta">@Mock</span></span><br><span class="line">  <span class="keyword">private</span> Acct acct;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildWholesaleInstExWithWrongFormat</span><span class="params">()</span> <span class="keyword">throws</span> BaseAppException </span>&#123;</span><br><span class="line">    Mockito.doThrow(<span class="keyword">new</span> BaseAppException(OrderErrorCodeDef.CVBS_ORDER_SUBS_CUST_IS_DIFFERENT)).when(exceptionChecker)</span><br><span class="line">            .publishBizException(OrderErrorCodeDef.CVBS_ORDER_SUBS_CUST_IS_DIFFERENT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建用于测试的对象</span></span><br><span class="line">    WholesaleInstExDto wholesaleInstExDto = <span class="keyword">new</span> WholesaleInstExDto();</span><br><span class="line">    wholesaleInstExDto.setAcctId(<span class="string">"1"</span>);</span><br><span class="line">    wholesaleInstExDto.setCustId(<span class="string">"1"</span>);</span><br><span class="line">    Map&lt;String, String&gt; paramStrMap = Maps.newHashMap();</span><br><span class="line">    paramStrMap.put(<span class="string">"A"</span>, <span class="string">"1000"</span>);</span><br><span class="line">    <span class="comment">//设置mock对象预期行为和输出</span></span><br><span class="line">    Mockito.when(acctService.queryAcctByAcctNbr(<span class="string">"100"</span>)).thenReturn(acct);</span><br><span class="line">    Mockito.when(acct.getAcctId()).thenReturn(<span class="string">"1"</span>);</span><br><span class="line">    Mockito.when(acct.getCustId()).thenReturn(<span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">//调用被测试方法，这个方法校验wholesaleInstExDto和paramStrMap的CustId须一致。因此按照设定值，此处会抛出异常。</span></span><br><span class="line">    transferAcctImportComp.buildWholesaleInstEx(wholesaleInstExDto, paramStrMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  也可以使用org.junit.rules.ExpectedException规则：</p>
+<ul>
+<li><p>标准的JUnit的org.junit.Test注解提供了一个expected属性，你可以用它来指定一个Throwble类型，如果方法调用中抛出了这个异常，这条测试用例就算通过了。很多情况下有它就足够了，不过如果你想验证下异常的信息——你就得另寻出路了。使用ExpectedException来实现这个非常简单：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExpectedExceptionsTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Rule</span></span><br><span class="line">  <span class="keyword">public</span> ExpectedException thrown = ExpectedException.none();</span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">verifiesTypeAndMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    thrown.expect(RuntimeException.class);</span><br><span class="line">    thrown.expectMessage(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中，我们可以期望抛出的异常中包含指定的信息。</p>
+</li>
+</ul>
+<h5 id="参数匹配器"><a href="#参数匹配器" class="headerlink" title="参数匹配器"></a>参数匹配器</h5><ul>
+<li>如 anyInt、anyString、anyMap…..</li>
+<li>需要注意的是：如果使用参数匹配器，那么所有的参数都要使用参数匹配器，不管是stubbing还是verify的时候都一样。<br>如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	<span class="meta">@Test</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">argumentMatcherTest2</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    Map&lt;Integer,String&gt; map = mock(Map.class);  </span><br><span class="line">    when(map.put(anyInt(),anyString())).thenReturn(<span class="string">"hello"</span>);<span class="comment">//anyString()替换成"hello"就会报错  </span></span><br><span class="line">    map.put(<span class="number">1</span>, <span class="string">"world"</span>);  </span><br><span class="line">    verify(map).put(eq(<span class="number">1</span>), eq(<span class="string">"world"</span>)); <span class="comment">//eq("world")替换成"world"也会报错  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h5><p>即验证测试结果与期望值是否一致。<br>一些常用断言：</p>
+<ul>
+<li>assertEquals<br>比较实际的值和用户预期的值是否一样。</li>
+<li>assertTrue、与assertFalse<br>判断某个条件是真还是假，如果和预期的值相同则测试成功，否则将失败。</li>
+<li>assertNull与assertNotNull<br>验证所测试的对象是否为空或不为空。</li>
+<li>assertSame与assertNotSame<br>测试预期的值和实际的值是否为同一个参数(即判断是否为相同的引用)。assertNotSame则测试预期的值和实际的值是不为同一个参数。</li>
+<li>fail<br>fail断言能使测试立即失败，这种断言通常用于标记某个不应该被到达的分支。</li>
+</ul>
+<p><em>剩下的后面再写。</em></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Annjun 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/单元测试/" rel="tag"><i class="fa fa-tag"></i> 单元测试</a>
+          
+            <a href="/tags/Mockito/" rel="tag"><i class="fa fa-tag"></i> Mockito</a>
+          
+            <a href="/tags/Junit/" rel="tag"><i class="fa fa-tag"></i> Junit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/14/javaWeb开发环境-一些简单环境变量配置/" rel="next" title="javaWeb开发环境:一些简单前期准备配置">
+                <i class="fa fa-chevron-left"></i> javaWeb开发环境:一些简单前期准备配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar2.jpg"
+                alt="Annjun" />
+            
+              <p class="site-author-name" itemprop="name">Annjun</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/annjun1224" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:annjun1224@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/2130531014" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://annjun0124.lofter.com" target="_blank" title="Loft"><i class="fa fa-fw fa-globe"></i>Loft</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                「友情链接」
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://shenyizhou.github.io/" title="Orion" target="_blank">Orion</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://junlegao.github.io/" title="GorgeGao" target="_blank">GorgeGao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xiaoke33i.github.io/" title="Xiaoke" target="_blank">Xiaoke</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sxl5513.github.io/" title="Sxl" target="_blank">Sxl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.terenceyu.top/" title="Terenceyu" target="_blank">Terenceyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lcdlovel.github.io/" title="Lovel" target="_blank">Lovel</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://guanjiexu.github.io/" title="Marsman" target="_blank">Marsman</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于单元测试"><span class="nav-number">1.</span> <span class="nav-text">关于单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单元测试的优点"><span class="nav-number">1.1.</span> <span class="nav-text">单元测试的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于隔离测试（Mock）和Mock对象"><span class="nav-number">1.2.</span> <span class="nav-text">关于隔离测试（Mock）和Mock对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于测试替身"><span class="nav-number">1.3.</span> <span class="nav-text">关于测试替身</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mockito"><span class="nav-number">2.</span> <span class="nav-text">Mockito</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是Mockito"><span class="nav-number">2.1.</span> <span class="nav-text">什么是Mockito</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDEA里新建某个类的测试类的方法"><span class="nav-number">2.2.</span> <span class="nav-text">IDEA里新建某个类的测试类的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mocktio实例"><span class="nav-number">2.3.</span> <span class="nav-text">Mocktio实例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#几个常用注解"><span class="nav-number">2.3.1.</span> <span class="nav-text">几个常用注解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用语法"><span class="nav-number">2.4.</span> <span class="nav-text">常用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设定-Mock-对象某个方法调用时的返回值"><span class="nav-number">2.4.1.</span> <span class="nav-text">设定 Mock 对象某个方法调用时的返回值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证被测试方法"><span class="nav-number">2.4.2.</span> <span class="nav-text">验证被测试方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对方法设定返回异常"><span class="nav-number">2.4.3.</span> <span class="nav-text">对方法设定返回异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数匹配器"><span class="nav-number">2.4.4.</span> <span class="nav-text">参数匹配器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#断言"><span class="nav-number">2.4.5.</span> <span class="nav-text">断言</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Annjun</span>
+
+  
+
+  
+</div>
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz',
+        appKey: 'o6ezpv308TnQcW5ytXlSNwqs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz", "o6ezpv308TnQcW5ytXlSNwqs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+     <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+  
+</body>
+</html>
