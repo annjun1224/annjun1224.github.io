@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="JavaScript,JQuery,Fish," />
+
+
+<meta name="description" content="这个问题一开始是作为第一次试讲的一个Q&amp;A来写的，但是发现整理的时候越写越多，干脆单独写一篇来具体说下对这三个函数的理解和他们各自的区别。主要结合其API手册和源码来介绍。">
+<meta name="keywords" content="JavaScript,JQuery,Fish">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于fish.each()、$(selector).each()和$.each()的各自含义与区别">
+<meta property="og:url" content="http://yoursite.com/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/index.html">
+<meta property="og:site_name" content="Ars Nova">
+<meta property="og:description" content="这个问题一开始是作为第一次试讲的一个Q&amp;A来写的，但是发现整理的时候越写越多，干脆单独写一篇来具体说下对这三个函数的理解和他们各自的区别。主要结合其API手册和源码来介绍。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/index.html">
+<meta property="og:updated_time" content="2018-05-17T07:35:00.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于fish.each()、$(selector).each()和$.each()的各自含义与区别">
+<meta name="twitter:description" content="这个问题一开始是作为第一次试讲的一个Q&amp;A来写的，但是发现整理的时候越写越多，干脆单独写一篇来具体说下对这三个函数的理解和他们各自的区别。主要结合其API手册和源码来介绍。">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/index.html">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>关于fish.each()、$(selector).each()和$.each()的各自含义与区别 | Ars Nova</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <!--  -->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/annjun1224"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ars Nova</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">「等待，并心怀希望吧。」</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Annjun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ars Nova">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于fish.each()、$(selector).each()和$.each()的各自含义与区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T13:38:18+08:00">2018-05-17</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/" class="leancloud_visitors" data-flag-title="关于fish.each()、$(selector).each()和$.each()的各自含义与区别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">这个问题一开始是作为第一次试讲的一个Q&A来写的，但是发现整理的时候越写越多，干脆单独写一篇来具体说下对这三个函数的理解和他们各自的区别。主要结合其API手册和源码来介绍。</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/" rel="gallery_cjha8193g000cecuqs4u2fw0z"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h3 id="fish-each"><a href="#fish-each" class="headerlink" title="fish.each"></a>fish.each</h3><ul>
+<li>代码示例<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fish.each(<span class="keyword">this</span>.paymentViewSelectors, <span class="function"><span class="keyword">function</span> (<span class="params">selector</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> $view = <span class="keyword">this</span>.getView(selector);</span><br><span class="line">                    $view &amp;&amp; $view.$form &amp;&amp; $view.$form.form(<span class="string">'clear'</span>);</span><br><span class="line">                    $view &amp;&amp; $view.$grid &amp;&amp; $view.$grid.grid(<span class="string">'clearData'</span>);</span><br><span class="line">                &#125;.bind(<span class="keyword">this</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="API介绍"><a href="#API介绍" class="headerlink" title="API介绍"></a>API介绍</h4><ul>
+<li><p><strong>each( obj, iterator, [context] )</strong></p>
+<ul>
+<li><p>遍历obj，按顺序遍历输出每个值，如果存在原生的forEach方法，Underscore就使用它代替。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fish.each([1, 2, 3], alert);</span><br><span class="line">=&gt; alerts each number in turn...</span><br><span class="line">fish.each(&#123;one: 1, two: 2, three: 3&#125;, alert);</span><br><span class="line">=&gt; alerts each number value in turn...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Parameters</p>
+<ul>
+<li><p><strong>obj : Object</strong>:<br>可以是数组也可以是对象</p>
+</li>
+<li><p><strong>iterator : Function</strong>：<br>用来处理每个元素：<br>如果obj是 <strong>数组</strong>,参数为 <strong>(element, index, obj)</strong>;<br>如果obj是个 <strong>对象</strong>,iterator的参数是 <strong>(value, key, obj)</strong>。</p>
+</li>
+<li><p><strong>context : Object (optional)</strong><br>如果传递了context参数,则把iterator绑定到context对象上。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="fish-each的源码"><a href="#fish-each的源码" class="headerlink" title="fish.each的源码"></a>fish.each的源码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数组或对象遍历</span></span><br><span class="line"><span class="comment"> * @memberOf module:zrender/core/util</span></span><br><span class="line"><span class="comment"> * @param &#123;Object|Array&#125; obj</span></span><br><span class="line"><span class="comment"> * @param &#123;Function&#125; cb</span></span><br><span class="line"><span class="comment"> * @param &#123;*&#125; [context]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">each</span>(<span class="params">obj, cb, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!(obj &amp;&amp; cb)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (obj.forEach &amp;&amp; obj.forEach === nativeForEach) &#123;</span><br><span class="line">        obj.forEach(cb, context);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (obj.length === +obj.length) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = obj.length; i &lt; len; i++) &#123;</span><br><span class="line">            cb.call(context, obj[i], i, obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">                cb.call(context, obj[key], key, obj);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>第一个参数obj即为需要遍历的对象，可以为数组，也可以是对象。</strong></p>
+<ul>
+<li><p>当对象不存在时，直接返回。</p>
+</li>
+<li><p>如果对象有原生的forEach方法，则使用原生的forEach方法代替each，依旧传入cb和context参数。</p>
+</li>
+<li><p>关于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.length === +obj.length</span><br></pre></td></tr></table></figure>
+<p>简单来说就是判定obj对象是否是数组。<br>这段代码等价于:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> obj.length === “number” &amp;&amp; !<span class="built_in">isNaN</span>(obj.length))</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>’+’号其实是将后面跟的操作数转型成了数字类型。   </p>
+</li>
+<li><p>如果obj是一个string类型，如”abc”,我们可以拿到length属性；如果是一个function，或者一个数组，我们都可以拿到他们的length属性。但如果是一个object类型的数据，它可能是不包含length属性的。</p>
+</li>
+<li><p>因此，这个方法为了区分非数组、非字符串、非函数类型的数据，对此，我们可以尝试使用for in循环来遍历数据。同时，对于不同的数据，cb函数里的参数也不一样。</p>
+</li>
+<li><p>可参考：<a href="http://www.css88.com/archives/5222" target="_blank" rel="noopener">http://www.css88.com/archives/5222</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>cb是来处理遍历数据的函数。</strong>  </p>
+<ul>
+<li><p>cb函数通过其call方法来指定函数的this指向传入的context的上下文对象。</p>
+</li>
+<li><p>call后面传入的除context以外的参数即为函数cb的入参：  </p>
+<p>如果是数组，则为 <strong>obj[i], i, obj</strong>（对应i下标的数组元素，i下标，数组对象）。  </p>
+<p>如果是对象，则为 <strong>obj[key], key, obj</strong>（属性key值为key时对应的value，属性key值，对象）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>context是上下文对象，即用来改变function的this指针的指向。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="each"><a href="#each" class="headerlink" title="$.each"></a>$.each</h3><ul>
+<li>代码示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.each([<span class="number">52</span>, <span class="number">97</span>], <span class="function"><span class="keyword">function</span>(<span class="params">index, value</span>) </span>&#123;</span><br><span class="line">        alert(index + <span class="string">': '</span> + value);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="API介绍-1"><a href="#API介绍-1" class="headerlink" title="API介绍"></a>API介绍</h4><ul>
+<li><p><strong>$.each( object, callback )</strong>  </p>
+<ul>
+<li><p>通用例遍方法，可用于例遍对象和数组。</p>
+</li>
+<li><p>不同于例遍 jQuery 对象的 $().each() 方法，此方法可用于例遍任何对象。</p>
+</li>
+<li><p>回调函数拥有两个参数：第一个为对象的成员或数组的索引，第二个为对应变量或内容。如果需要退出 each 循环可使回调函数返回 false，其它返回值将被忽略。</p>
+</li>
+</ul>
+</li>
+<li><p>参数：  </p>
+<ul>
+<li><p><strong>object：Object</strong>   需要例遍的对象或数组。  </p>
+</li>
+<li><p><strong>callback (可选)：Function</strong>   每个成员/元素执行的回调函数。<br>如果遍历数组，回调函数参数为<strong>(i, obj[i])</strong> （成员索引，成员值）。<br>如果遍历对象，回调函数参数为<strong>(key, obj[key])</strong> （属性名称，属性值）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Execute a callback for every element in the matched set.</span></span><br><span class="line">each: <span class="function"><span class="keyword">function</span>(<span class="params"> callback </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> jQuery.each( <span class="keyword">this</span>, callback );</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">each: <span class="function"><span class="keyword">function</span>(<span class="params"> obj, callback </span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> length, i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> ( isArrayLike( obj ) ) &#123;</span><br><span class="line">			length = obj.length;</span><br><span class="line">			<span class="keyword">for</span> ( ; i &lt; length; i++ ) &#123;</span><br><span class="line">				<span class="keyword">if</span> ( callback.call( obj[ i ], i, obj[ i ] ) === <span class="literal">false</span> ) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">for</span> ( i <span class="keyword">in</span> obj ) &#123;</span><br><span class="line">				<span class="keyword">if</span> ( callback.call( obj[ i ], i, obj[ i ] ) === <span class="literal">false</span> ) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> obj;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>$.each和fish.each的作用大体相同，都是对数组或者对象的遍历，但是其回调函数传入的参数不一样。</p>
+</li>
+<li><p>从源码可以看出，$.each可以通过return false来中断循环。</p>
+</li>
+<li><p>而且$.each在使用call函数时，默认传递每次遍历的对象作为回调函数的this指向，fish.each是传递context参数来指定。</p>
+</li>
+</ul>
+<h3 id="selector-each"><a href="#selector-each" class="headerlink" title="$(selector).each"></a>$(selector).each</h3><ul>
+<li><p>代码示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  $(<span class="string">"li"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert($(<span class="keyword">this</span>).text())</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大概可以看出，$(selector).each与$.each的最大不同在于它是将选择器选择的DOM元素作为遍历对象也就是obj传入的。</p>
+</li>
+</ul>
+<h4 id="API介绍-2"><a href="#API介绍-2" class="headerlink" title="API介绍"></a>API介绍</h4><ul>
+<li><p>语法：<strong>$(selector).each(function(index,element))</strong></p>
+</li>
+<li><p><strong>each(callback)</strong> ：以每一个匹配的元素作为上下文来执行一个函数。</p>
+</li>
+<li><p>意味着，每次执行传递进来的函数时，函数中的this关键字都指向一个不同的DOM元素（每次都是一个不同的匹配元素）。而且，在每次执行函数时，都会给函数传递一个表示作为执行环境的元素在匹配的元素集合中所处位置的数字值作为参数（从零开始的整型）。</p>
+</li>
+<li><p>如果想得到 jQuery对象，可以使用 $(this) 函数。<br>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//this</span></span><br><span class="line">$(<span class="string">"img"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.src = <span class="string">"test"</span> + i + <span class="string">".jpg"</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line">[ &lt;img src="test0.jpg" /&gt;, &lt;img src="test1.jpg" /&gt; ]</span><br><span class="line">//$(this)</span><br><span class="line">$("li").each(function()&#123;</span><br><span class="line"> alert($(this).text())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回 ‘false’ 将停止循环 (就像在普通的循环中使用 ‘break’)。返回 ‘true’ 跳至下一个循环(就像在普通的循环中使用’continue’)。</p>
+</li>
+</ul>
+<h4 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h4><ul>
+<li><p>$(selector).each与$.each的源码一致。</p>
+</li>
+<li><p>each()函数是基本上所有的框架都提供了的一个工具类函数，通过它，你可以遍历对象、数组的属性值并进行处理。</p>
+</li>
+<li><p>jQuery和jQuery对象都实现了该方法，对于jQuery对象，只是把each方法简单的进行了委托：把jQuery对象作为第一个参数传递给jQuery的each方法。</p>
+</li>
+<li><p>换句话说：jQuery提供的each方法是对参数一（obj）提供的对象的中所有的子元素逐一进行方法调用。而jQuery对象提供的each方法则是对jQuery内部的子元素进行逐个调用。</p>
+</li>
+<li><p>因此，与fish.each和$.each不同的是，$(selector).each明显是针对选择器所选的元素进行的each操作，而fish.each和$.each是对数组或者对象的循环遍历。</p>
+</li>
+<li><p>$(selector).each每次执行函数时，其this指向每次遍历的DOM元素；$.each则也是把传入的obj遍历时的每一个对象作为this，而fish.each可以通过context传递this。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>关于作用：</p>
+<ul>
+<li>fish.each与$.each一样，都是对数组或者对象的遍历；而$(selector).each则是其特殊情况：把被选择器选择的DOM元素作为对象遍历。</li>
+</ul>
+</li>
+<li><p>关于参数：  </p>
+<ul>
+<li>fish：<ul>
+<li>如果obj是 <strong>数组</strong>: <strong>each( obj, function(obj[i], i, obj), [context] )</strong>;</li>
+<li>如果obj是 <strong>对象</strong>: <strong>each( obj, function(obj[key], key, obj), [context] )</strong>。</li>
+</ul>
+</li>
+<li>$(selector).each：<strong>$(selector).each(function(index,element))</strong>。</li>
+<li>$.each:<ul>
+<li>如果obj是 <strong>数组</strong>: <strong>each( obj, function(i, obj[i]) )</strong>;</li>
+<li>如果obj是 <strong>对象</strong>: <strong>each( obj, function(key, obj[key]) )</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>关于this：</p>
+<ul>
+<li>fish.each可以传递context指定回调函数的this。</li>
+<li>$.each默认this指向每次循环的obj成员对象；$(selector).each默认this指向每次循环的DOM对象。</li>
+</ul>
+</li>
+<li><p>是否可中断：</p>
+<ul>
+<li>$(selector).each可以通过return false结束循环；true跳过本次循环；$.each也可以通过return false结束循环。</li>
+<li>fish.each里面没有涉及这一点。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Annjun 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/JQuery/" rel="tag"><i class="fa fa-tag"></i> JQuery</a>
+          
+            <a href="/tags/Fish/" rel="tag"><i class="fa fa-tag"></i> Fish</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/第一次试讲的问题集中整理和归纳/" rel="next" title="第一次试讲的问题集中整理和归纳">
+                <i class="fa fa-chevron-left"></i> 第一次试讲的问题集中整理和归纳
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar2.jpg"
+                alt="Annjun" />
+            
+              <p class="site-author-name" itemprop="name">Annjun</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/annjun1224" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:annjun1224@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/2130531014" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://annjun0124.lofter.com" target="_blank" title="Loft"><i class="fa fa-fw fa-globe"></i>Loft</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                「友情链接」
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://shenyizhou.github.io/" title="Orion" target="_blank">Orion</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://junlegao.github.io/" title="GorgeGao" target="_blank">GorgeGao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xiaoke33i.github.io/" title="Xiaoke" target="_blank">Xiaoke</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sxl5513.github.io/" title="Sxl" target="_blank">Sxl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.terenceyu.top/" title="Terenceyu" target="_blank">Terenceyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lcdlovel.github.io/" title="Lovel" target="_blank">Lovel</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://guanjiexu.github.io/" title="Marsman" target="_blank">Marsman</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#fish-each"><span class="nav-number">1.</span> <span class="nav-text">fish.each</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API介绍"><span class="nav-number">1.1.</span> <span class="nav-text">API介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fish-each的源码"><span class="nav-number">1.2.</span> <span class="nav-text">fish.each的源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#each"><span class="nav-number">2.</span> <span class="nav-text">$.each</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API介绍-1"><span class="nav-number">2.1.</span> <span class="nav-text">API介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码"><span class="nav-number">2.2.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selector-each"><span class="nav-number">3.</span> <span class="nav-text">$(selector).each</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#API介绍-2"><span class="nav-number">3.1.</span> <span class="nav-text">API介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码-1"><span class="nav-number">3.2.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Annjun</span>
+
+  
+
+  
+</div>
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz',
+        appKey: 'o6ezpv308TnQcW5ytXlSNwqs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz", "o6ezpv308TnQcW5ytXlSNwqs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+     <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+  
+</body>
+</html>

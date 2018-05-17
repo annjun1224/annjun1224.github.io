@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=6.0.5">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.5" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="JavaScript,Fish,Backbone," />
+
+
+<meta name="description" content="在大概学习了一些前端知识如backb、Handlebars、JQuer、RequireJS等等以及完成了一些任务后，进行了第一次试讲。过程中有些问答并没有都回答出来，有些还是不够熟练。因此花费了一些时间再去巩固熟悉它，这里整理一下对这些问题的理解。">
+<meta name="keywords" content="JavaScript,Fish,Backbone">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一次试讲的问题集中整理和归纳">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/第一次试讲的问题集中整理和归纳/index.html">
+<meta property="og:site_name" content="Ars Nova">
+<meta property="og:description" content="在大概学习了一些前端知识如backb、Handlebars、JQuer、RequireJS等等以及完成了一些任务后，进行了第一次试讲。过程中有些问答并没有都回答出来，有些还是不够熟练。因此花费了一些时间再去巩固熟悉它，这里整理一下对这些问题的理解。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/05/16/第一次试讲的问题集中整理和归纳/index.html">
+<meta property="og:updated_time" content="2018-05-17T05:42:05.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第一次试讲的问题集中整理和归纳">
+<meta name="twitter:description" content="在大概学习了一些前端知识如backb、Handlebars、JQuer、RequireJS等等以及完成了一些任务后，进行了第一次试讲。过程中有些问答并没有都回答出来，有些还是不够熟练。因此花费了一些时间再去巩固熟悉它，这里整理一下对这些问题的理解。">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/16/第一次试讲的问题集中整理和归纳/index.html">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/第一次试讲的问题集中整理和归纳/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>第一次试讲的问题集中整理和归纳 | Ars Nova</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <!--  -->
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/annjun1224"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ars Nova</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">「等待，并心怀希望吧。」</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/第一次试讲的问题集中整理和归纳/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Annjun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar2.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ars Nova">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第一次试讲的问题集中整理和归纳</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T10:14:02+08:00">2018-05-16</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/16/第一次试讲的问题集中整理和归纳/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/16/第一次试讲的问题集中整理和归纳/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/16/第一次试讲的问题集中整理和归纳/" class="leancloud_visitors" data-flag-title="第一次试讲的问题集中整理和归纳">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">在大概学习了一些前端知识如backb、Handlebars、JQuer、RequireJS等等以及完成了一些任务后，进行了第一次试讲。过程中有些问答并没有都回答出来，有些还是不够熟练。因此花费了一些时间再去巩固熟悉它，这里整理一下对这些问题的理解。</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="/" rel="gallery_cjha81955000pecuq7la11k45"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h4 id="Q-绑定事件何时销毁，会不会触发两次。"><a href="#Q-绑定事件何时销毁，会不会触发两次。" class="headerlink" title="Q: 绑定事件何时销毁，会不会触发两次。"></a>Q: 绑定事件何时销毁，会不会触发两次。</h4><p>涉及代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//账户界面</span></span><br><span class="line"><span class="keyword">this</span>.trigger(<span class="string">'AcctId:change'</span>, <span class="keyword">this</span>.acctList.get(<span class="keyword">this</span>.currentAcctId));</span><br><span class="line"><span class="comment">//账户详情界面</span></span><br><span class="line"><span class="keyword">this</span>.parentView.on(<span class="string">'AcctId:change'</span>, <span class="keyword">this</span>.loadAcctForm.bind(<span class="keyword">this</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>A</strong>：绑定一个事件，调用多次会触发多次；一个事件绑定多次，一次调用都会触发。事件调用off方法销毁。</p>
+<ul>
+<li><p>这个是关于<strong>Backbone的事件管理</strong>的问题，Backbone的Events是其很重要的内容之一，因为Events是Backbone中所有其它模块的基类，无论是Model、Collection、View还是Router和History，都继承了Events中的方法。</p>
+</li>
+<li><p>Events提供的事件管理相关的方法，包括on、off和trigger（类似于JQuery的bind、unbind和trigger）。</p>
+</li>
+<li><p><strong>on</strong>：将一个函数绑定到对象的某个事件中</p>
+<ul>
+<li><strong>on( event, callback, [context] )</strong>。event：事件名称；callback：回调函数；context：给回调函数提供一个上下文，默认以该对象为函数上下文。</li>
+<li>在对象上绑定一个callback回调函数。只要event触发，该回调函数就会调用。</li>
+<li>如果你的页面含有大量的不同事件，我们约定使用冒号来为事件添加命名空间，也可以同时绑定多个事件，事件用空格分隔。</li>
+<li>如果监听的是”all”事件，那么任何事件的触发都会触发该回调函数，回调函数的第一个参数会传递该事件的名称。   </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>off</strong>：移除全局事件监听。移除对象先前绑定的callback函数。</p>
+<ul>
+<li><strong>off( [event], [callback], [context] )</strong>。参数含义与on一致。</li>
+<li>如果没有指定context（上下文），所有上下文下的这个回调函数将被移除。</li>
+<li>如果没有指定callback，所有绑定这个事件回调函数将被移除。</li>
+<li>如果没有指定event，所有事件的回调函数会被移除。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>trigger</strong>：触发对象的某个事件。<ul>
+<li><strong>trigger( event, [args] )</strong>。event：事件名称；其余参数将会传递到触发事件的回调函数里，作为其参数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>关于事件的绑定和触发次数的问题，这里通过示例代码说一下：</p>
+<ul>
+<li><p>给对象model绑定一个事件时，trigger调用多次可多次触发。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个Model对象</span></span><br><span class="line"><span class="keyword">var</span> model = <span class="keyword">new</span> Backbone.Model();</span><br><span class="line"><span class="comment">// 在model对象中向自定义事件event绑定函数</span></span><br><span class="line">model.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'触发1'</span> + p1 + p2);</span><br><span class="line">&#125;);</span><br><span class="line">  <span class="comment">// 触发event事件，将调用上面绑定的函数</span></span><br><span class="line">model.trigger(<span class="string">'event'</span>, <span class="string">'value1'</span>, <span class="string">'value2'</span>);</span><br><span class="line">model.trigger(<span class="string">'event'</span>, <span class="string">'value3'</span>, <span class="string">'value4'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出</span></span><br><span class="line">触发<span class="number">1</span>value1value2</span><br><span class="line">触发<span class="number">1</span>value3value4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给一个对象绑定多个事件时，调用trigger会同时触发。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> model = <span class="keyword">new</span> Backbone.Model();</span><br><span class="line"><span class="comment">// 在model对象中向自定义事件event绑定两个函数</span></span><br><span class="line">model.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'触发1'</span> + p1 + p2);</span><br><span class="line">&#125;);</span><br><span class="line">model.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'触发2'</span>+p1+p2);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 触发event事件，将调用上面绑定的两个函数</span></span><br><span class="line">model.trigger(<span class="string">'event'</span>, <span class="string">'value1'</span>, <span class="string">'value2'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出</span></span><br><span class="line">触发<span class="number">1</span>value1value2</span><br><span class="line">触发<span class="number">2</span>value1value2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于移除事件后的再次触发。已经off后的函数不会再触发。<br>这里触发事件没有传递函数参数，所以输出未定义。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> model = <span class="keyword">new</span> Backbone.Model();</span><br><span class="line"><span class="comment">// 在model对象中向自定义事件event绑定两个函数</span></span><br><span class="line">model.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'触发1'</span> + p1 + p2);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 移除event事件中绑定的所有方法</span></span><br><span class="line">model.off(<span class="string">'event'</span>).on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">p1, p2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'移除后触发'</span> + p1 + p2);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 触发event事件，但不会执行已被移除的函数</span></span><br><span class="line">model.trigger(<span class="string">'event'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出</span></span><br><span class="line">移除后触发undefinedundefined</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>注：事件的触发顺序和绑定顺序一致。all事件总会在其它事件中的监听函数都执行完毕之后触发。</p>
+</li>
+<li>可参考：<a href="https://blog.csdn.net/likun557/article/details/53169357" target="_blank" rel="noopener">https://blog.csdn.net/likun557/article/details/53169357</a></li>
+</ul>
+<h4 id="Q-fish-each和-each的区别"><a href="#Q-fish-each和-each的区别" class="headerlink" title="Q: fish.each和$.each的区别"></a>Q: fish.each和$.each的区别</h4><p>A:<br>两者回调函数参数不同；后者可以使用return false退出循环而前者不可以。   </p>
+<p>涉及代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fish.each(<span class="keyword">this</span>.paymentViewSelectors, <span class="function"><span class="keyword">function</span> (<span class="params">selector</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> $view = <span class="keyword">this</span>.getView(selector);</span><br><span class="line">                    $view &amp;&amp; $view.$form &amp;&amp; $view.$form.form(<span class="string">'clear'</span>);</span><br><span class="line">                    $view &amp;&amp; $view.$grid &amp;&amp; $view.$grid.grid(<span class="string">'clearData'</span>);</span><br><span class="line">                &#125;.bind(<span class="keyword">this</span>))</span><br></pre></td></tr></table></figure></p>
+<p>具体内容单独写了篇来介绍，可见：</p>
+<h4 id="Q-document-body-clientWidth含义"><a href="#Q-document-body-clientWidth含义" class="headerlink" title="Q: document.body.clientWidth含义"></a>Q: document.body.clientWidth含义</h4><p>涉及代码：width和height来自表格详情按钮点击的popView方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">onDepositDetailClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rowData = <span class="keyword">this</span>.$depositGrid.grid(<span class="string">'getSelection'</span>);</span><br><span class="line">    <span class="keyword">var</span> id = <span class="keyword">this</span>.$depositGrid.grid(<span class="string">'getRowid'</span>, rowData);</span><br><span class="line">    rowData = <span class="keyword">this</span>.$depositGrid.grid(<span class="string">'getRowData'</span>, id);</span><br><span class="line">    fish.popupView(&#123;</span><br><span class="line">        url: <span class="string">'modules/order/order-entry/views/popwin/DepositDetailPopView'</span>,</span><br><span class="line">        viewOption: &#123;</span><br><span class="line">            <span class="string">"subsId"</span>: rowData.subsId,</span><br><span class="line">            <span class="string">"depositTypeId"</span>: rowData.depositTypeId,</span><br><span class="line">            <span class="string">"accNbr"</span>: rowData.accNbr</span><br><span class="line">        &#125;,</span><br><span class="line">        width: <span class="built_in">document</span>.body.clientWidth * <span class="number">0.85</span>,</span><br><span class="line">        height: <span class="built_in">document</span>.body.clientHeight * <span class="number">0.8</span>,</span><br><span class="line">        close: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>A:<br>网页可见区域宽： document.body.clientWidth；<br>网页可见区域高： document.body.clientHeight。</p>
+<ul>
+<li>关于document对象：<ul>
+<li>每个载入浏览器的 HTML 文档都会成为 Document 对象。Document 对象使我们可以从脚本中对 HTML 页面中的所有元素进行访问。（Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。）</li>
+<li>其中，body是document的属性之一，提供对 &#60;body&#62; 元素的直接访问。</li>
+<li>可参考：<a href="http://www.w3school.com.cn/jsref/dom_obj_document.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/jsref/dom_obj_document.asp</a></li>
+</ul>
+</li>
+<li><p>document.body.clientHeight 是获取body元素的高度，它有默认高度，是随内容高度而撑开，是height：auto；</p>
+</li>
+<li><p>相比之下，document.documentElement.clientHeight 是获取文档的高度，它因为是有默认高度的，等于窗口高度，就是height：100&#37;；</p>
+</li>
+<li><p>body元素又是一个块级元素，默认宽度100&#37;。</p>
+</li>
+</ul>
+<h4 id="Q-Fish-View的-el属性"><a href="#Q-Fish-View的-el属性" class="headerlink" title="Q: Fish.View的$el属性"></a>Q: Fish.View的$el属性</h4><p>A: $el:false的含义。<br>涉及内容：FISH框架视图View的加载。</p>
+<ul>
+<li><p>来自FISHwiki：</p>
+<ul>
+<li>关于视图加载的定义：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> MyView = fish.View.extend(&#123;</span><br><span class="line">  <span class="comment">// 视图 Dom 元素</span></span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  <span class="comment">// 视图模板函数</span></span><br><span class="line">  template: fish.compile(<span class="string">'&lt;p&gt;&#123;&#123;name&#125;&#125;&lt;/p&gt;'</span>),</span><br><span class="line">  <span class="comment">// 填充模板数据</span></span><br><span class="line">  serialize: &#123;</span><br><span class="line">    name: <span class="string">'Lilei'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 视图事件处理</span></span><br><span class="line">  events: &#123;</span><br><span class="line">    <span class="string">'click'</span>: <span class="string">'onClick'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 视图初始化</span></span><br><span class="line">  initialize: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'enter initialize...'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 视图渲染结束处理</span></span><br><span class="line">  afterRender: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'enter afterRender...'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 视图移除处理</span></span><br><span class="line">  cleanup: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'enter cleanup...'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  onClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'click'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>关于视图属性：</p>
+<ul>
+<li>其中el是视图的Dom元素，默认是 &#60;div&#62;&#60;/div&#62;，所以如果不设置时，视图创建出来会在模板外包装一层 div 节点。</li>
+<li>设置为选择器字符串，表示模板内容插入到对应选择器里 (eg: el: ‘&#35;myDiv’)。</li>
+<li>设置为 false ，表示以模板内容为视图 Dom 元素。</li>
+<li>可参考：<a href="http://fish.ztesoft.com/fish-desktop/guide/View-Definition.html" target="_blank" rel="noopener">http://fish.ztesoft.com/fish-desktop/guide/View-Definition.html</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="Q-bind-this-的作用"><a href="#Q-bind-this-的作用" class="headerlink" title="Q: bind(this)的作用"></a>Q: bind(this)的作用</h4><p>涉及代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">callback: <span class="function"><span class="keyword">function</span> (<span class="params">$view</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">this</span>.acctInfoChildView = $view;</span><br><span class="line">                    <span class="keyword">this</span>.parentView.on(<span class="string">'AcctId:change'</span>, <span class="keyword">this</span>.loadAcctForm.bind(<span class="keyword">this</span>));</span><br><span class="line">                &#125;.bind(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure></p>
+<p>A: bind(this)用于改变this指针指向的对象。</p>
+<ul>
+<li>这里涉及到this，以及apply、call、bind方法。会单独写一篇文章说明一下这个问题。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Annjun 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/Fish/" rel="tag"><i class="fa fa-tag"></i> Fish</a>
+          
+            <a href="/tags/Backbone/" rel="tag"><i class="fa fa-tag"></i> Backbone</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/15/关于对this的理解，以及bind-、apply-和call-的关系/" rel="next" title="关于对this的理解，以及bind()、apply()和call()的关系">
+                <i class="fa fa-chevron-left"></i> 关于对this的理解，以及bind()、apply()和call()的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/17/关于fish-each-、-selector-each-和-each-的各自含义与区别/" rel="prev" title="关于fish.each()、$(selector).each()和$.each()的各自含义与区别">
+                关于fish.each()、$(selector).each()和$.each()的各自含义与区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar2.jpg"
+                alt="Annjun" />
+            
+              <p class="site-author-name" itemprop="name">Annjun</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/annjun1224" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:annjun1224@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/2130531014" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://annjun0124.lofter.com" target="_blank" title="Loft"><i class="fa fa-fw fa-globe"></i>Loft</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                「友情链接」
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://shenyizhou.github.io/" title="Orion" target="_blank">Orion</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://junlegao.github.io/" title="GorgeGao" target="_blank">GorgeGao</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xiaoke33i.github.io/" title="Xiaoke" target="_blank">Xiaoke</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sxl5513.github.io/" title="Sxl" target="_blank">Sxl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.terenceyu.top/" title="Terenceyu" target="_blank">Terenceyu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://lcdlovel.github.io/" title="Lovel" target="_blank">Lovel</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://guanjiexu.github.io/" title="Marsman" target="_blank">Marsman</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">1.</span> <span class="nav-text">Q&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-绑定事件何时销毁，会不会触发两次。"><span class="nav-number">1.0.1.</span> <span class="nav-text">Q: 绑定事件何时销毁，会不会触发两次。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-fish-each和-each的区别"><span class="nav-number">1.0.2.</span> <span class="nav-text">Q: fish.each和$.each的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-document-body-clientWidth含义"><span class="nav-number">1.0.3.</span> <span class="nav-text">Q: document.body.clientWidth含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Fish-View的-el属性"><span class="nav-number">1.0.4.</span> <span class="nav-text">Q: Fish.View的$el属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-bind-this-的作用"><span class="nav-number">1.0.5.</span> <span class="nav-text">Q: bind(this)的作用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">
+&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Annjun</span>
+
+  
+
+  
+</div>
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.5</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz',
+        appKey: 'o6ezpv308TnQcW5ytXlSNwqs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("DyRxVWoLcOPehg4C2bbCC9Pa-gzGzoHsz", "o6ezpv308TnQcW5ytXlSNwqs");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+     <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+  
+</body>
+</html>

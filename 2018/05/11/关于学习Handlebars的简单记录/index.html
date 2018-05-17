@@ -404,7 +404,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/" rel="gallery_cjh5pso7o000cs0uqtu80q2sy"
+                 href="/" rel="gallery_cjha81946000gecuqgy9m11l4"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/" itemprop="contentUrl"/>
               </a>
@@ -423,7 +423,7 @@
 <li><p>虽然是无逻辑，但还是有一些简单的逻辑比如if、each等。</p>
 </li>
 <li><p>可以拿Handlebars的语法风格和一般普通js+html混合的风格作对比：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js+html</span></span><br><span class="line"><span class="number">1</span> &lt;% <span class="keyword">if</span> (names.length) &#123; %&gt;</span><br><span class="line"><span class="number">2</span>   &lt;ul&gt;</span><br><span class="line"><span class="number">3</span>     &lt;% names.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123; %&gt;</span><br><span class="line"><span class="number">4</span>       &lt;li&gt;&lt;%= name %&gt;&lt;/li&gt;</span><br><span class="line"><span class="number">5</span>     &lt;% &#125;) %&gt;</span><br><span class="line"><span class="number">6</span>   &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">7 &lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js+html</span></span><br><span class="line"><span class="number">1</span> &lt;% <span class="keyword">if</span> (names.length) &#123; %&gt;</span><br><span class="line"><span class="number">2</span>   &lt;ul&gt;</span><br><span class="line"><span class="number">3</span>     &lt;% names.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123; %&gt;</span><br><span class="line"><span class="number">4</span>       &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">%=</span> <span class="attr">name</span> %&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="number">5</span>     &lt;% &#125;) %&gt;</span><br><span class="line"><span class="number">6</span>   &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">7 &lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  //Handlebars</span><br><span class="line">1 &#123;&#123;#if names.length&#125;&#125;</span><br><span class="line">2   <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">3     &#123;&#123;#each names&#125;&#125;</span><br><span class="line">4       <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">5     &#123;&#123;/each&#125;&#125;</span><br><span class="line">6   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">7 &#123;&#123;/if&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>看上去一目了然多了。</p>
 </li>
@@ -553,6 +553,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/05/15/关于对this的理解，以及bind-、apply-和call-的关系/" rel="prev" title="关于对this的理解，以及bind()、apply()和call()的关系">
+                关于对this的理解，以及bind()、apply()和call()的关系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -659,7 +663,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -719,7 +723,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
